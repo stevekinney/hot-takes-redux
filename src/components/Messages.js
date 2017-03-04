@@ -12,7 +12,7 @@ const Messages = ({ auth, messages, users, deleteMessage }) => (
           {...message}
           user={users[message.uid]}
           belongsToCurrentUser={auth.uid && message.uid === auth.uid}
-          deleteMessage={deleteMessage(key)}
+          deleteMessage={deleteMessage}
         />
       ))
     }

@@ -6,10 +6,10 @@ const mapStateToProps = ({ messages, users, auth }) => {
   return { messages, users, auth };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = () => {
   return {
     deleteMessage(id) {
-      return () => dispatch(deleteMessage(id));
+      return () => deleteMessage(id);
     }
   };
 };

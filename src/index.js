@@ -8,6 +8,7 @@ import initialState from './initial-state';
 import Application from './containers/ApplicationContainer';
 import { startListeningToAuth } from './actions/auth';
 import { startListeningForUsers } from './actions/user';
+import { startListeningForMessages } from './actions/messages';
 import './index.css';
 
 const middleware = [ thunk ];
@@ -25,6 +26,7 @@ const store = createStore(
 
 store.dispatch(startListeningToAuth());
 store.dispatch(startListeningForUsers());
+store.dispatch(startListeningForMessages());
 
 ReactDOM.render(
   <Provider store={store}>

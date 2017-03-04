@@ -1,4 +1,5 @@
-import { auth, provider } from '../firebase';
+import { auth, provider, database } from '../firebase';
+import pick from 'lodash/pick';
 
 export const signIn = () => {
   auth.signInWithPopup(provider);
@@ -41,6 +42,9 @@ export const startListeningToAuth = () => {
     auth.onAuthStateChanged(user => {
       if (user) {
         dispatch(signedIn(user));
+        database.ref('users')
+                .child(user.uid)
+                .set(pick(user, ['displayName', 'email', 'uid', 'photoURL']));
       } else {
         dispatch(signedOut());
       }

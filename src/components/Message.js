@@ -18,7 +18,7 @@ const Message = ({ belongsToCurrentUser, content, id, user, deleteMessage }) => 
           belongsToCurrentUser &&
           <button
             className="small destructive"
-            onClick={deleteMessage}
+            onClick={deleteMessage(id)}
           >
             Delete
           </button>
