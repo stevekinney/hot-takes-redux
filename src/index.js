@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import reducer from './reducers';
 import initialState from './initial-state';
-import Application from './components/Application';
+import Application from './containers/ApplicationContainer';
 import './index.css';
 
 const middleware = [ thunk ];

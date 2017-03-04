@@ -1,18 +1,20 @@
 import React, { PropTypes } from 'react';
+import './CurrentUser.css';
 
-const CurrentUser = ({ user }) => {
+const CurrentUser = ({ auth, signOut }) => {
   return (
     <div className="CurrentUser">
       <img
         className="CurrentUser--photo"
-        src={ user.photoURL }
-        alt={ user.displayName }
+        src={ auth.photoURL }
+        alt={ auth.displayName }
       />
       <div className="CurrentUser--identification">
-        <h3 className="CurrentUser--displayName">{ user.displayName }</h3>
-        <p className="CurrentUser--email">{ user.email }</p>
+        <h3 className="CurrentUser--displayName">{ auth.displayName }</h3>
+        <p className="CurrentUser--email">{ auth.email }</p>
         <button
           className="CurrentUser--signout"
+          onClick={signOut}
         >
           Sign Out
         </button>
@@ -22,12 +24,13 @@ const CurrentUser = ({ user }) => {
 };
 
 CurrentUser.propTypes = {
-  user: PropTypes.shape({
+  auth: PropTypes.shape({
     displayName: PropTypes.string,
     email: PropTypes.string.isRequired,
     photoURL: PropTypes.string,
     uid: PropTypes.string.isRequired
-  })
+  }),
+  signOut: PropTypes.func.isRequired
 };
 
 export default CurrentUser;

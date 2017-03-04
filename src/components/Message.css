@@ -1,0 +1,47 @@
+.Message {
+  border: 1px solid #ccc;
+  display: flex;
+  margin-bottom: 1em;
+  position: relative;
+}
+
+.Message.current-user {
+  background-color: #fff2cc;
+  border-color: #e5d9b7;
+}
+
+.Message--avatar {
+  margin-right: 1em;
+  background-color: #eee;
+  border-right: 1px solid #ddd;
+}
+
+.current-user > .Message--avatar {
+  background-color: #ffcf42;
+  border-right-color: #e5d9b7;
+}
+
+.Message--avatar img {
+  max-height: 64px;
+}
+
+.Message--main {
+  padding: 1em;
+  width: 100%;
+}
+
+.Message--content {
+  margin: 0;
+}
+
+.Message--user {
+  margin: 0;
+}
+
+.Message--controls {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+

@@ -10,7 +10,7 @@ export default function authReducer(state = initialState.auth, action) {
         photoURL: null,
         uid: null
       };
-    case 'LOGOUT':
+    case 'SIGN_OUT':
       return {
         status: 'ANONYMOUS',
         email: null,
@@ -18,9 +18,9 @@ export default function authReducer(state = initialState.auth, action) {
         photoURL: null,
         uid: null
       };
-    case 'LOGIN':
+    case 'SIGN_IN':
       return {
-        status: 'LOGGED_IN',
+        status: 'SIGNED_IN',
         email: action.email,
         displayName: action.displayName,
         photoURL: action.photoURL,
