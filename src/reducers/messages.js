@@ -7,7 +7,7 @@ export default function messagesReducer(state = initialState.messages, action) {
   switch(action.type) {
     case 'ADD_MESSAGE':
       return extend(clone(state), {
-        [Date.now().toString]: {
+        [Date.now().toString()]: {
           content: action.content,
           timeStamp: action.timeStamp,
           uid: action.uid
