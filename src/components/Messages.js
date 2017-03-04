@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import Message from './Message';
 import map from 'lodash/map';
+import './Messages.css';
 
 const Messages = ({ auth, messages, users, deleteMessage }) => (
   <section className="Messages">

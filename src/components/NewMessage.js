@@ -17,6 +17,7 @@ const NewMessage = ({ newMessage, auth, handleChange, handleSubmit }) => (
         className="NewMessage--submit block"
         type="submit"
         value="Post"
+        disabled={!newMessage.length}
       />
     </label>
   </form>
