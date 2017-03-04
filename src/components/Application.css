@@ -1,4 +1,11 @@
 .Application {
   margin: auto;
-  max-width: 600px;
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+}
+
+.Application--sidebar {
+  margin-right: 1em;
+  min-width: 350px;
 }

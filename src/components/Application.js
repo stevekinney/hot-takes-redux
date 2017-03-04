@@ -8,10 +8,12 @@ import './Application.css';
 const Application = ({ auth, signIn, signOut }) => {
   return (
     <main className="Application">
-      { auth.status === 'ANONYMOUS' && <SignIn signIn={signIn}/> }
-      { auth.status === 'SIGNED_IN' && <NewMessageContainer /> }
+      <div className="Application--sidebar">
+        { auth.status === 'ANONYMOUS' && <SignIn signIn={signIn}/> }
+        { auth.status === 'SIGNED_IN' && <NewMessageContainer /> }
+        { auth.status === 'SIGNED_IN' && <CurrentUser auth={auth} signOut={signOut} />}
+      </div>
       <MessagesContainer />
-      { auth.status === 'SIGNED_IN' && <CurrentUser auth={auth} signOut={signOut} />}
     </main>
   );
 };
