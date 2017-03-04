@@ -1,6 +1,4 @@
 import { auth, provider } from '../firebase';
-import extend from 'lodash/extend';
-import pick from 'lodash/pick';
 
 export const signIn = () => {
   auth.signInWithPopup(provider);
@@ -18,27 +16,34 @@ export const signOut = () => {
   };
 };
 
+export const signedIn = (user) => {
+  return {
+    type: 'SIGN_IN',
+    displayName: user.displayName,
+    email: user.email,
+    uid: user.uid,
+    photoURL: user.photoURL
+  };
+};
+
+export const signedOut = () => {
+  return {
+    type: 'SIGN_OUT',
+    email: null,
+    displayName: null,
+    photoURL: null,
+    uid: null
+  };
+};
+
 export const startListeningToAuth = () => {
   return (dispatch, getState) => {
-    auth.onAuthStateChanged(authData => {
-      if (authData) {
-        dispatch(
-          extend(
-            { type: 'SIGN_IN' },
-            pick(authData, [ 'displayName', 'email', 'uid', 'photoURL' ])
-          )
-        );
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        dispatch(signedIn(user));
       } else {
-        if (getState().auth.status !== 'ANONYMOUS') {
-          dispatch({
-            type: 'SIGN_OUT',
-            email: null,
-            displayName: null,
-            photoURL: null,
-            uid: null
-          });
-        }
+        dispatch(signedOut());
       }
     });
-  }
+  };
 };
