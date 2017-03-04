@@ -1,11 +1,13 @@
 import React, { PropTypes } from 'react';
 import Message from './Message';
 import map from 'lodash/map';
+import reverse from 'lodash/reverse';
+import './Messages.css';
 
 const Messages = ({ auth, messages, users, deleteMessage }) => (
   <section className="Messages">
     {
-      map(messages, (message, key) => (
+      reverse(map(messages, (message, key) => (
         <Message
           key={key}
           id={key}
@@ -14,7 +16,7 @@ const Messages = ({ auth, messages, users, deleteMessage }) => (
           belongsToCurrentUser={auth.uid && message.uid === auth.uid}
           deleteMessage={deleteMessage}
         />
-      ))
+      )))
     }
   </section>
 );
