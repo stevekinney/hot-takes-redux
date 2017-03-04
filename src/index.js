@@ -6,6 +6,7 @@ import thunk from 'redux-thunk';
 import reducer from './reducers';
 import initialState from './initial-state';
 import Application from './containers/ApplicationContainer';
+import { startListeningToAuth } from './actions/auth';
 import './index.css';
 
 const middleware = [ thunk ];
@@ -20,6 +21,8 @@ const store = createStore(
     ...enhancers
   )
 );
+
+store.dispatch(startListeningToAuth());
 
 ReactDOM.render(
   <Provider store={store}>
