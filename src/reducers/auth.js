@@ -4,11 +4,7 @@ export default function authReducer(state = initialState.auth, action) {
   switch(action.type) {
     case 'ATTEMPTING_LOGIN':
       return {
-        status: 'AWAITING_AUTH_RESPONSE',
-        email: null,
-        displayName: null,
-        photoURL: null,
-        uid: null
+        status: 'AWAITING_AUTH_RESPONSE'
       };
     case 'SIGN_OUT':
       return {
