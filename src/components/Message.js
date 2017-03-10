@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 import './Message.css';
 
-const Message = ({ belongsToCurrentUser, content, id, user, deleteMessage }) => (
+const Message = ({ belongsToCurrentUser, content, id, isAdmin, user, deleteMessage }) => (
   <article className={classNames('Message', { 'current-user': belongsToCurrentUser })}>
     <div className="Message--avatar">
       <img
@@ -15,7 +15,7 @@ const Message = ({ belongsToCurrentUser, content, id, user, deleteMessage }) => 
       <p className="Message--content">{ content }</p>
       <footer className="Message--controls">
         {
-          belongsToCurrentUser &&
+          (belongsToCurrentUser || isAdmin) &&
           <button
             className="small destructive"
             onClick={deleteMessage}

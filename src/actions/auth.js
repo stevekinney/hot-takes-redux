@@ -31,6 +31,8 @@ const signedOut = () => {
   };
 };
 
+
+
 export const startListeningToAuthChanges = () => {
   return (dispatch) => {
     auth.onAuthStateChanged((user) => {
@@ -39,6 +41,11 @@ export const startListeningToAuthChanges = () => {
         database.ref('users')
                 .child(user.uid)
                 .set(pick(user, ['displayName', 'email', 'uid', 'photoURL']));
+        database.ref('admins').child(user.uid)
+                              .once('value')
+                              .then((snapshot => {
+                                if (snapshot.val()) dispatch({ type: 'SET_AS_ADMIN' });
+                              }));
       } else {
         dispatch(signedOut());
       }

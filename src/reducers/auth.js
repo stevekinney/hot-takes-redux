@@ -12,7 +12,8 @@ export default function authReducer(state = initialState.auth, action) {
         email: null,
         displayName: null,
         photoURL: null,
-        uid: null
+        uid: null,
+        isAdmin: false
       };
     case 'SIGN_IN':
       return {
@@ -20,8 +21,11 @@ export default function authReducer(state = initialState.auth, action) {
         email: action.email,
         displayName: action.displayName,
         photoURL: action.photoURL,
-        uid: action.uid
+        uid: action.uid,
+        isAdmin: false
       };
+    case 'SET_AS_ADMIN':
+      return Object.assign({}, state, { isAdmin: true });
     default:
       return state;
   }
