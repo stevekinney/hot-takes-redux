@@ -1,8 +1,8 @@
-export const addMessage = ({ content, uid }) => {
+export const addMessage = (key = Date.now(), { content, uid }) => {
   return {
     type: 'ADD_MESSAGE',
     content,
-    key: Date.now(),
+    key,
     timeStamp: Date.now(),
     uid
   };

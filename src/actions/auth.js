@@ -10,10 +10,6 @@ export const signIn = () => {
 
 export const signOut = () => {
   return {
-    type: 'SIGN_OUT',
-    email: null,
-    displayName: null,
-    photoURL: null,
-    uid: null
+    type: 'SIGN_OUT'
   };
 };
