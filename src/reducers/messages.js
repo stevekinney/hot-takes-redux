@@ -13,7 +13,7 @@ export default function messagesReducer(state = initialState.messages, action) {
           uid: action.uid
         }
       });
-    case 'DELETE_MESSAGE':
+    case 'REMOVE_MESSAGE':
       return omit(clone(state), action.key);
     default:
       return state;

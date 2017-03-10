@@ -8,9 +8,17 @@ export const addMessage = ({ content, uid }) => {
   };
 };
 
-export const deleteMessage = (key) => {
+export const removeMessage = (key) => {
   return {
-    type: 'DELETE_MESSAGE',
+    type: 'REMOVE_MESSAGE',
     key
   };
+};
+
+export const createMessage = (message) => {
+  return addMessage(message);
+};
+
+export const destroyMessage = (key) => {
+  return removeMessage(key);
 };

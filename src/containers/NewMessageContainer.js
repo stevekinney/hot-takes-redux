@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import NewMessage from '../components/NewMessage';
 import { updateNewMessage, clearNewMessage } from '../actions/new-message';
-import { addMessage } from '../actions/messages';
+import { createMessage } from '../actions/messages';
 
 const mapStateToProps = ({ newMessage, auth }) => {
   return { newMessage, auth };
@@ -12,7 +12,7 @@ const mapDispatchToProps = (dispatch) => {
     handleChange(event) { dispatch(updateNewMessage(event.target.value)); },
     handleSubmit(event, content, uid) {
       event.preventDefault();
-      dispatch(addMessage({ content, uid }));
+      dispatch(createMessage({ content, uid }));
       dispatch(clearNewMessage());
     }
   };
