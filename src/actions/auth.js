@@ -1,5 +1,4 @@
 import { auth, database, googleAuthProvider } from '../firebase';
-import { addUser } from './users';
 import pick from 'lodash/pick';
 
 export const signIn = () => {
@@ -37,7 +36,9 @@ export const startListeningToAuthChanges = () => {
     auth.onAuthStateChanged((user) => {
       if (user) {
         dispatch(signedIn(user));
-        dispatch(addUser(user));
+        database.ref('users')
+                .child(user.uid)
+                .set(pick(user, ['displayName', 'email', 'uid', 'photoURL']));
       } else {
         dispatch(signedOut());
       }

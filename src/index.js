@@ -10,6 +10,7 @@ import './index.css';
 
 import { startListeningToAuthChanges } from './actions/auth';
 import { startListeningForUsers } from './actions/users';
+import { startListeningForMessages } from './actions/messages';
 
 const middleware = [ thunk ];
 const enhancers = [];
@@ -33,3 +34,4 @@ ReactDOM.render(
 
 store.dispatch(startListeningToAuthChanges());
 store.dispatch(startListeningForUsers());
+store.dispatch(startListeningForMessages());
