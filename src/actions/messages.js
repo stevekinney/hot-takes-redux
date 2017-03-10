@@ -1,15 +1,16 @@
 export const addMessage = ({ content, uid }) => {
   return {
     type: 'ADD_MESSAGE',
-    timeStamp: Date.now(),
     content,
+    key: Date.now(),
+    timeStamp: Date.now(),
     uid
   };
 };
 
-export const deleteMessage = (id) => {
+export const deleteMessage = (key) => {
   return {
     type: 'DELETE_MESSAGE',
-    id
+    key
   };
 };
