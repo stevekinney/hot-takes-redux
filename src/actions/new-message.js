@@ -5,7 +5,7 @@ export const updateNewMessage = (content) => {
   };
 };
 
-export const clearNewMessage = (content) => {
+export const clearNewMessage = () => {
   return {
     type: 'CLEAR_NEW_MESSAGE'
   };
