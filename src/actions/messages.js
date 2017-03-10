@@ -48,6 +48,10 @@ export const startListeningForMessages = () => {
       dispatch(addMessage(snapshot.key, snapshot.val()));
     });
 
+    messagesRef.on('child_changed', (snapshot) => {
+      dispatch(addMessage(snapshot.key, snapshot.val()));
+    });
+
     messagesRef.on('child_removed', (snapshot) => {
       dispatch(deleteMessage(snapshot.key));
     });
