@@ -1,4 +1,5 @@
 import { auth, database, googleAuthProvider } from '../firebase';
+import registerMessaging from '../register-messaging';
 import pick from 'lodash/pick';
 
 export const signIn = () => {
@@ -46,6 +47,7 @@ export const startListeningToAuthChanges = () => {
                               .then((snapshot => {
                                 if (snapshot.val()) dispatch({ type: 'SET_AS_ADMIN' });
                               }));
+        registerMessaging(user);
       } else {
         dispatch(signedOut());
       }
